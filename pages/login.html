@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sign in</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/register.css">
 </head>
 <body>
-    
+    <div class="form-container">
+        <form id="login-form">
+            <div class="container">
+                <h2 style="color: seagreen; text-align: center; margin-bottom: 5px;">Welcome Back</h2>
+                
+                <div class="email field-group">
+                    <input type="email" id="login-email" name="email" required placeholder="Email">
+                    <small id="email-error"></small>
+                </div>
+
+                <div class="passwords field-group">
+                    <input type="password" id="login-password" name="password" required placeholder="Password">
+                    <small id="password-error"></small>
+                </div>
+            </div>
+
+            <div class="btn">
+                <button id="login-btn" type="submit">Log in</button>
+            </div>
+
+            <p style="text-align: center; margin-top: 15px; font-size: 13px;">
+                Don't have an account? <a href="index.html" style="color: seagreen; font-weight: 600;">Sign up</a>
+            </p>
+        </form>
+    </div>
+    <script src="../js/login.js"></script>
 </body>
 </html>

@@ -3,9 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>sign up</title>
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="../css/register.css">
 </head>
 <body>
-    
+    <div class="form-container">
+        <form id="signup-form" action="">
+            <div class="container">
+                <div class="name">
+                    <div class="field-group">
+                        <input type="text" id="firstname" name="firstname" required placeholder="First Name">
+                        <small></small>
+                    </div>
+                    <div class="field-group">
+                        <input type="text" id="lastname" name="lastname" required placeholder="Last Name">
+                        <small></small>
+                    </div>
+                </div>
+
+                <div class="email field-group">
+                    <input type="email" id="email" name="email" required placeholder="Email">
+                    <small></small>
+                </div>
+
+                <div class="passwords">
+                    <div class="field-group">
+                        <input type="password" id="password" name="password" required placeholder="Password">
+                        <small></small>
+                    </div>
+                    <div class="field-group">
+                        <input type="password" id="confpass" name="confpass" required placeholder="Confirm Password">
+                        <small></small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="btn">
+                <button id="btn" type="submit">Sign up</button>
+            </div>
+        </form>
+    </div>
+    <script src="../js/register.js"></script>
 </body>
 </html>
