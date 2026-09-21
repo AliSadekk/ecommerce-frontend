@@ -1,28 +1,56 @@
-const cartButtons = document.querySelectorAll(".product-card button");
+const productCards = document.querySelectorAll(".product-card");
 
-cartButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-        const productCard = button.parentElement;
+productCards.forEach((card) => {
+
+    const minusButton = card.querySelector(".minus-btn");
+    const plusButton = card.querySelector(".plus-btn");
+    const quantityElement = card.querySelector(".quantity");
+    const addToCartButton = card.querySelector(".add-to-cart");
+
+    let quantity = 1;
+
+    // Increase quantity
+    plusButton.addEventListener("click", () => {
+        quantity++;
+        quantityElement.textContent = quantity;
+    });
+
+    // Decrease quantity
+    minusButton.addEventListener("click", () => {
+        if (quantity > 1) {
+            quantity--;
+            quantityElement.textContent = quantity;
+        }
+    });
+
+    // Add product to cart
+    addToCartButton.addEventListener("click", () => {
 
         const product = {
-            name: productCard.querySelector("h2").textContent,
-            price: productCard.querySelector(".price").textContent,
-            image: productCard.querySelector("img").src,
-            quantity: 1
+            name: card.querySelector("h2").textContent,
+            price: card.querySelector(".price").textContent,
+            image: card.querySelector("img").src,
+            quantity: quantity
         };
 
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-        const existingProduct = cart.find(item => item.name === product.name);
+        const existingProduct = cart.find(
+            item => item.name === product.name
+        );
 
         if (existingProduct) {
-            existingProduct.quantity += 1;
+            existingProduct.quantity += quantity;
         } else {
             cart.push(product);
         }
 
         localStorage.setItem("cart", JSON.stringify(cart));
 
-        alert(`${product.name} added to cart!`);
+        alert(`${product.name} x${quantity} added to cart!`);
+
+        // Reset quantity
+        quantity = 1;
+        quantityElement.textContent = quantity;
     });
 });
