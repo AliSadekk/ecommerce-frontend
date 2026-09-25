@@ -20,7 +20,14 @@ window.addEventListener('DOMContentLoaded', () => {
         const passVal = passwordInput.value.trim();
 
         
-        const users = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+        let users = [];
+        try {
+            const storedUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+            users = Array.isArray(storedUsers) ? storedUsers : [];
+        } catch (error) {
+            emailError.textContent = 'Unable to read saved accounts. Please try again.';
+            return;
+        }
 
        
         const userAccount = users.find(u => u.email === emailVal);

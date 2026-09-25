@@ -77,7 +77,14 @@ form.addEventListener('submit', (e) => {
     }
 
    
-    const users = JSON.parse(localStorage.getItem('registeredUsers')) || [];
+    let users = [];
+    try {
+        const storedUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
+        users = Array.isArray(storedUsers) ? storedUsers : [];
+    } catch (error) {
+        setFieldStatus(email, false, 'Unable to read saved accounts. Please try again.');
+        return;
+    }
 
     
     const emailExists = users.some(u => u.email.toLowerCase() === email.value.trim().toLowerCase());

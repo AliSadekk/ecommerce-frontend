@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/cart.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">Shop Ease</div>
+
+        <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="home.html#products">Products</a>
+            <a href="cart.html">Cart</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+        </div>
+    </nav>
+
+    <section class="products-section">
+        <h1>Your Shopping Cart</h1>
+        
+        <div class="products-container" id="cart-container">
+            <!-- Cart products will be injected here via JS -->
+        </div>
+
+        <div id="cart-total-container" style="display: none;">
+            <h2>Total: $<span id="cart-total">0.00</span></h2>
+            <a href="checkout.html" class="checkout-btn" id="checkout-btn">Proceed to Checkout</a>
+        </div>
+    </section>
+
+    <script src="../js/cart.js"></script>
+</body>
+</html>
