@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ShopEase - Products</title>
+
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+
+<body>
+
+   
+
+    <nav class="navbar">
+
+        <div class="logo">
+            ShopEase
+        </div>
+
+        <div class="nav-links">
+
+            <a href="home.html">Home</a>
+
+           
+
+            <a href="#">Cart</a>
+
+            <a href="login.html">Login</a>
+
+        </div>
+
+    </nav>
+
+
+  
+
+    <section class="products-section" id="products">
+
+        <h1>Our Products</h1>
+
+        <div class="products-container" id="products-container">
+
+            <p>Loading products...</p>
+
+        </div>
+
+    </section>
+
+
+  
+    <script src="../js/home.js"></script>
+
+
+   
+
+    <script>
+
+        let xml = new XMLHttpRequest();
+
+
+        
+        xml.open(
+            "GET",
+            "https://dummyjson.com/products"
+        );
+
+
+       
+        xml.send();
+
+
+        
+        xml.addEventListener("readystatechange",  ()=> {
+
+            if (xml.readyState === 4) {
+
+                console.log("Status:", xml.status);
+
+
+                
+                if (xml.status === 200) {
+
+                    
+                    let data = JSON.parse(xml.responseText);
+
+
+                   
+                    let products = data.products;
+
+
+                    
+                    let cardsHtml = "";
+
+
+                    
+                    for (let item of products) {
+
+                        cardsHtml += `
+
+                            <div class="product-card">
+
+                                <img
+                                    src="${item.thumbnail}"
+                                    alt="${item.title}"
+                                >
+
+                                <h2>
+                                    ${item.title}
+                                </h2>
+
+                                <p class="price">
+                                    $${item.price}
+                                </p>
+
+                                <button>
+                                    Add to Cart
+                                </button>
+
+                            </div>
+
+                        `;
+
+                    }
+
+
+                    
+                    document.querySelector(
+                        "#products-container"
+                    ).innerHTML = cardsHtml;
+
+                }
+
+
+                
+               
+
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>
