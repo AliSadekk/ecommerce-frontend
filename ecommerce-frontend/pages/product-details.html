@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product | ShopEase Store</title>
+    <link rel="stylesheet" href="../css/shop.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <a href="products.html" class="logo"><span class="logo-dot"></span>ShopEase</a>
+            <nav class="nav">
+                <a href="products.html">Shop</a>
+                <a href="cart.html" class="cart-link" aria-label="Cart">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        aria-hidden="true">
+                        <path d="M6 6h15l-1.5 9h-12z" />
+                        <path d="M6 6L5 2H2" />
+                        <circle cx="9" cy="20" r="1.5" />
+                        <circle cx="18" cy="20" r="1.5" />
+                    </svg>
+                    <span class="nav-text">Cart</span>
+                    <span class="badge" data-cart-count hidden>0</span>
+                </a>
+                <a href="login.html" data-user-link>Login</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" id="product-root">
+        <div class="details" aria-hidden="true">
+            <div class="skeleton">
+                <div class="sk-media"></div>
+            </div>
+            <div>
+                <div class="sk-line short"></div>
+                <div class="sk-line"></div>
+                <div class="sk-line"></div>
+                <div class="sk-line short"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">© 2026 Sage Store. All rights reserved.</footer>
+
+    <script src="../js/storage.js"></script>
+    <script src="../js/product-details.js"></script>
+</body>
+
+</html>
