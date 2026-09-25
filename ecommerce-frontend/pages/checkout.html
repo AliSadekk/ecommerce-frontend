@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout</title>
+<link rel="stylesheet" href="../css/home.css">
+<link rel="stylesheet" href="../css/Payment.css">
+<script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">ShopEase</div>
+    <div class="nav-links">
+      <a href="home.html">Home</a>
+      <a href="cart.html">Cart</a>
+      <a href="login.html">Login</a>
+    </div>
+  </nav>
+  <div class="page-heading">
+    <h1>Checkout</h1>
+  </div>
+  <div class="checkout" id="checkout">
+
+    <div id="left-col">
+      <form id="checkout-form" class="card" novalidate>
+        <h2>Shipping details</h2>
+
+        <div class="field" id="field-fullName">
+          <label for="fullName">Full name</label>
+          <input type="text" id="fullName" name="fullName" autocomplete="name">
+          <div class="error-msg">Please enter your full name</div>
+        </div>
+
+        <div class="two-col">
+          <div class="field" id="field-phone">
+            <label for="phone">Phone number</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel">
+            <div class="error-msg">Please enter a valid phone number</div>
+          </div>
+          <div class="field" id="field-city">
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" autocomplete="address-level2">
+            <div class="error-msg">Please enter your city</div>
+          </div>
+        </div>
+
+        <div class="field" id="field-address">
+          <label for="address">Full address</label>
+          <input type="text" id="address" name="address" autocomplete="street-address">
+          <div class="error-msg">Please enter your address</div>
+        </div>
+      </form>
+
+      <div class="card">
+        <h2>Payment method</h2>
+        <div class="pay-options">
+          <label class="pay-option selected" data-method="cash">
+            <input type="radio" name="paymentMethod" value="cash" checked>
+            <div>
+              <div class="pay-label">Cash on delivery</div>
+              <div class="pay-sub">Pay in cash when your order arrives</div>
+            </div>
+          </label>
+          <label class="pay-option" data-method="card">
+            <input type="radio" name="paymentMethod" value="card">
+            <div>
+              <div class="pay-label">Credit / debit card</div>
+              <div class="pay-sub">Pay securely with Stripe</div>
+            </div>
+          </label>
+        </div>
+
+        <div id="card-fields">
+          <div class="field">
+            <label>Card details</label>
+            <div id="card-element"></div>
+          </div>
+        </div>
+
+        <div class="form-error" id="form-error"></div>
+
+        <button type="submit" form="checkout-form" class="submit-btn" id="submit-btn">
+          Place order
+        </button>
+      </div>
+    </div>
+
+    <div class="card" id="summary-card">
+      <h2>Order summary</h2>
+      <div id="summary-items"></div>
+      <div class="summary-totals">
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="sum-subtotal">$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Shipping</span>
+          <span id="sum-shipping">$0.00</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total</span>
+          <span id="sum-total">$0.00</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="../js/Payment.js"></script>
+</body>
+</html>

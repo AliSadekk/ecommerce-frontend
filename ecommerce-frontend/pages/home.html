@@ -26,7 +26,7 @@
 
            
 
-            <a href="#">Cart</a>
+            <a href="cart.html">Cart</a>
 
             <a href="login.html">Login</a>
 
@@ -56,92 +56,6 @@
 
    
 
-    <script>
-
-        let xml = new XMLHttpRequest();
-
-
-        
-        xml.open(
-            "GET",
-            "https://dummyjson.com/products"
-        );
-
-
-       
-        xml.send();
-
-
-        
-        xml.addEventListener("readystatechange",  ()=> {
-
-            if (xml.readyState === 4) {
-
-                console.log("Status:", xml.status);
-
-
-                
-                if (xml.status === 200) {
-
-                    
-                    let data = JSON.parse(xml.responseText);
-
-
-                   
-                    let products = data.products;
-
-
-                    
-                    let cardsHtml = "";
-
-
-                    
-                    for (let item of products) {
-
-                        cardsHtml += `
-
-                            <div class="product-card">
-
-                                <img
-                                    src="${item.thumbnail}"
-                                    alt="${item.title}"
-                                >
-
-                                <h2>
-                                    ${item.title}
-                                </h2>
-
-                                <p class="price">
-                                    $${item.price}
-                                </p>
-
-                                <button>
-                                    Add to Cart
-                                </button>
-
-                            </div>
-
-                        `;
-
-                    }
-
-
-                    
-                    document.querySelector(
-                        "#products-container"
-                    ).innerHTML = cardsHtml;
-
-                }
-
-
-                
-               
-
-            }
-
-        });
-
-    </script>
 
 </body>
 
