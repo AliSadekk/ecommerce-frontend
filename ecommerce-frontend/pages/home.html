@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Products</title>
+
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+
+<body>
+
+<h1>
+        <nav class="navbar">
+    <div class="logo">ShopEase</div>
+
+    <div class="nav-links">
+        <a href="home.html">Home</a>
+        <a href="#products">Products</a>
+        <a href="#">Cart</a>
+        <a href="login.html">Login</a>
+    </div>
+</nav>
+</h1>
+   
+
+    <script src="../js/home.js"></script>
+    <script>
+        let xml = new XMLHttpRequest();
+xml.open("GET", "https://6ab51aac24ee9d3caa1c2eb6.mockapi.io/products"); 
+xml.send(); 
+ 
+xml.addEventListener("readystatechange", () => { 
+  if (xml.readyState === 4 && xml.status === 200) { 
+    let products = JSON.parse(xml.response); 
+ 
+    let cardsHtml = ""; 
+    for (let item of products) { 
+      cardsHtml +=  
+        <div class="product-card"> 
+          <img src="${item.image}" alt="${item.title}"> 
+          <h2>${item.title}</h2> 
+          <p class="price">$${item.price}</p> 
+          <button>Add to Cart</button> 
+        </div> 
+      ; 
+    } 
+ 
+    const fullSection =  
+      <section class="products-section" id="products"> 
+        <h1>Our Products</h1> 
+        <div class="products-container"> 
+          ${cardsHtml} 
+        </div> 
+      </section> 
+    ; 
+ 
+    document.body.innerHTML += fullSection; 
+  } 
+}); 
+    </script> 
+</body> 
+</html> 
